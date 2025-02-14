@@ -2,20 +2,23 @@
 In early 2022, Aaron told me (with excited voice) that he came up with a new card game, which is based on [<u>br</u>idge](https://en.wikipedia.org/wiki/Contract_bridge) and [<u>UNO</u>](https://en.wikipedia.org/wiki/Uno_(card_game)). I was persuaded to try it out and actually found it interestering. Later we thought why not writting an application so that everyone who are interested can play it online. This repository is an implementation of the game. In a hypothetical but implausible future, we want to build a reinforcement learning agent to play this game, with the hope that it can achieve similar or better performance than human players.
 
 # Game settings
-***Players and Teams***:
+### Players and Teams:
 The game involves 4 players who take turns to play cards. Players who are not adjacent, in terms of the play order, belong to the same team. For example, if the play order is A → B → C → D, then A&C belong to one team, B&D another.
 
-***Cards distribution***: Each player will be randomly assigned 13 cards at the beginning of the game
+### Cards distribution: 
+Each player will be randomly assigned 13 cards at the beginning of the game
 - 6 table cards:
     - 3 hidden cards: invisible to everyone, including the owner, adding randomness to the game
     - 3 shown cards: visible to everyone
 - 7 hand cards: only visible to the owner
 
-***Objective***: The first player who played all 13 cards (both hand and table cards) wins the game for their team.
+### Objective:
+The first player who played all 13 cards (both hand and table cards) wins the game for their team.
 
 
 # Cards and Gameplay
-***Card types***: The deck consists of 52 cards: 2/3/4/5/6/7/8/9/10/J/Q/K/A, each with 4 copies.
+### Card types
+The deck consists of 52 cards: 2/3/4/5/6/7/8/9/10/J/Q/K/A, each with 4 copies.
 - **Ordinary cards**: 4-8, J-A in ascending order
 - **function cards**: 2,3,9,10, with special effects
     - 2: Skips your turn (the next player will deal with the last played card)
@@ -23,7 +26,7 @@ The game involves 4 players who take turns to play cards. Players who are not ad
     - 9: Forces the next player to play a card smaller than 9.
     - 10: Collects all hand cards, shuffles them, and redistributes to players by the play order, with the current player receiving the first card. After re-distribution, the next player will deal with the last played card. (The used 10 is excluded from the rest of the game, meaning they will not be collected to players' hand once it's played.)
     
-***Gameplay***: 
+### Gameplay
 1. Playing rules
     - The first player starts their round by playing any card. Following players must play cards greater or equal to the last played card or play function cards.
     - A player may play one card a time, or play multiple cards if these cards share the same value.
